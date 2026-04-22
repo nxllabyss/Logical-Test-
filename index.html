@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Test - INTJ Aesthetic</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+            <span class="theme-icon">🌙</span>
+        </button>
+    </div>
+
+    <!-- Page Container -->
+    <div class="page-container">
+        
+        <!-- Welcome Page -->
+        <div class="page" data-page="welcome">
+            <div class="page-content">
+                <div class="welcome-container">
+                    <h1 class="welcome-title" data-i18n="welcome_title">Welcome to Logic Test</h1>
+                    <p class="welcome-subtitle" data-i18n="welcome_subtitle">Challenge your mind with strategic logic puzzles. Test your reasoning, pattern recognition, and analytical thinking.</p>
+                    <button class="btn btn-primary" id="startBtn" data-i18n="btn_start">Start</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Language Selection Page -->
+        <div class="page" data-page="language">
+            <div class="page-content">
+                <div class="language-container">
+                    <h2 data-i18n="select_language">Select Language</h2>
+                    <div class="language-options">
+                        <button class="language-btn" data-lang="uz">
+                            <span class="flag">🇺🇿</span>
+                            <span class="lang-name">O'zbekcha</span>
+                        </button>
+                        <button class="language-btn" data-lang="ru">
+                            <span class="flag">🇷🇺</span>
+                            <span class="lang-name">Русский</span>
+                        </button>
+                        <button class="language-btn" data-lang="en">
+                            <span class="flag">🇬🇧</span>
+                            <span class="lang-name">English</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Difficulty Selection Page -->
+        <div class="page" data-page="difficulty">
+            <div class="page-content">
+                <div class="difficulty-container">
+                    <h2 data-i18n="select_difficulty">Select Difficulty</h2>
+                    <div class="difficulty-options">
+                        <button class="difficulty-btn" data-difficulty="easy">
+                            <span class="difficulty-icon">⭐</span>
+                            <span class="difficulty-label" data-i18n="easy">Easy</span>
+                            <span class="difficulty-questions">30 questions</span>
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="medium">
+                            <span class="difficulty-icon">⭐⭐</span>
+                            <span class="difficulty-label" data-i18n="medium">Medium</span>
+                            <span class="difficulty-questions">30 questions</span>
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="hard">
+                            <span class="difficulty-icon">⭐⭐⭐</span>
+                            <span class="difficulty-label" data-i18n="hard">Hard</span>
+                            <span class="difficulty-questions">30 questions</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Settings Page -->
+        <div class="page" data-page="settings">
+            <div class="page-content">
+                <div class="settings-container">
+                    <h2 data-i18n="test_settings">Test Settings</h2>
+                    
+                    <div class="settings-section">
+                        <label data-i18n="num_questions">Number of Questions</label>
+                        <div class="settings-options">
+                            <button class="settings-btn active" data-setting="questions" data-value="10">10</button>
+                            <button class="settings-btn" data-setting="questions" data-value="20">20</button>
+                            <button class="settings-btn" data-setting="questions" data-value="30">30</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <label data-i18n="time_per_question">Time per Question</label>
+                        <div class="settings-options">
+                            <button class="settings-btn" data-setting="time" data-value="15">15s</button>
+                            <button class="settings-btn active" data-setting="time" data-value="30">30s</button>
+                            <button class="settings-btn" data-setting="time" data-value="45">45s</button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" id="startTestBtn" data-i18n="btn_start_test">Start Test</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Page -->
+        <div class="page" data-page="test">
+            <div class="page-content">
+                <div class="test-container">
+                    <!-- Progress Bar -->
+                    <div class="progress-section">
+                        <div class="progress-info">
+                            <span class="progress-label" data-i18n="question">Question</span>
+                            <span class="progress-counter"><span id="currentQuestion">1</span>/<span id="totalQuestions">10</span></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Timer -->
+                    <div class="timer-section">
+                        <div class="timer-display" id="timerDisplay">30s</div>
+                    </div>
+
+                    <!-- Question -->
+                    <div class="question-section">
+                        <h3 class="question-text" id="questionText"></h3>
+                    </div>
+
+                    <!-- Answer Options -->
+                    <div class="answers-section">
+                        <button class="answer-btn" data-answer="0"></button>
+                        <button class="answer-btn" data-answer="1"></button>
+                        <button class="answer-btn" data-answer="2"></button>
+                        <button class="answer-btn" data-answer="3"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Page -->
+        <div class="page" data-page="results">
+            <div class="page-content">
+                <div class="results-container">
+                    <h2 data-i18n="test_completed">Test Completed!</h2>
+                    
+                    <div class="results-score">
+                        <div class="score-circle">
+                            <span class="score-percentage" id="scorePercentage">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="results-details">
+                        <p class="results-stat">
+                            <span data-i18n="correct_answers">Correct Answers:</span>
+                            <span id="correctCount">0</span>/<span id="totalCount">10</span>
+                        </p>
+                        <p class="results-performance">
+                            <span data-i18n="performance">Performance:</span>
+                            <span class="performance-level" id="performanceLevel">Medium</span>
+                        </p>
+                    </div>
+
+                    <button class="btn btn-primary" id="backHomeBtn" data-i18n="btn_back_home">Back to Home</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="data/questions_en.js"></script>
+    <script src="data/questions_uz.js"></script>
+    <script src="data/questions_ru.js"></script>
+    <script src="storage.js"></script>
+    <script src="timer.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
